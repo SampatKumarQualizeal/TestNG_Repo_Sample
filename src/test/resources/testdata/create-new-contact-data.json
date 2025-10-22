@@ -1,0 +1,76 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - standard data",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1234567890",
+      "company": "Acme Corp",
+      "address": "123 Main St, Springfield, USA"
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary value - minimum length first name",
+    "input": {
+      "firstName": "A",
+      "lastName": "Smith",
+      "email": "a.smith@example.com",
+      "phone": "+1987654321",
+      "company": "Beta LLC",
+      "address": "1 Short Rd, Smalltown, USA"
+    },
+    "expectedResult": "System displays appropriate message."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary value - maximum length last name",
+    "input": {
+      "firstName": "Jane",
+      "lastName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "email": "jane.longlastname@example.com",
+      "phone": "+1122334455",
+      "company": "Gamma Inc",
+      "address": "999 Long St, Bigcity, USA"
+    },
+    "expectedResult": "System displays appropriate message."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - international characters in name",
+    "input": {
+      "firstName": "José",
+      "lastName": "Ångström",
+      "email": "jose.angstrom@example.com",
+      "phone": "+447700900123",
+      "company": "GlobalTech",
+      "address": "10 Rue de Paris, Paris, France"
+    },
+    "expectedResult": "System displays appropriate message."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - empty optional fields (company, address)",
+    "input": {
+      "firstName": "Emily",
+      "lastName": "Clark",
+      "email": "emily.clark@example.com",
+      "phone": "+15551234567",
+      "company": "",
+      "address": ""
+    },
+    "expectedResult": "System displays appropriate message."
+  }
+]
