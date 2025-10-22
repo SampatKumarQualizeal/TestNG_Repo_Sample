@@ -1,0 +1,66 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - standard input",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "Acme Corp",
+      "address": "123 Main St, Springfield, USA"
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary value - minimal required fields",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com",
+      "phone": "1",
+      "company": "X",
+      "address": "1 X St"
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary value - maximal field lengths",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "JonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathan", // 70 chars
+      "lastName": "DoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoe", // 50 chars
+      "email": "jonathan.doe.maxlength@example.com",
+      "phone": "999999999999999", // 15 chars
+      "company": "MaxLengthCompanyNameMaxLengthCompanyNameMaxLengthCompanyName", // 50 chars
+      "address": "1234 Long Address Street Name, Very Large City, State, Country, 123456" // 70 chars
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  }
+]
