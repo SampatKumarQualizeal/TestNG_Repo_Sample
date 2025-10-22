@@ -1,0 +1,49 @@
+// Test data for TC-N001: Create a new contact
+// Purpose: Valid and edge-case data for contact creation in CRM
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation with typical data",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "Example Corp",
+      "address": "123 Main St, Cityville",
+      "notes": "Test contact creation."
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case: Minimum required fields only",
+    "input": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com",
+      "phone": "",
+      "company": "",
+      "address": "",
+      "notes": ""
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary: Max length fields",
+    "input": {
+      "firstName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "lastName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "email": "max.length.email.address.abcdefghijklmnopqrstuvwxyz@example.com",
+      "phone": "99999999999999999999",
+      "company": "Company Name With Maximum Length Allowed By System",
+      "address": "123 Long Address Street Name That Exceeds Normal Length, Some City, Some Country, 123456",
+      "notes": "This is a very long note field to test boundary conditions for the notes input."
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  }
+]
