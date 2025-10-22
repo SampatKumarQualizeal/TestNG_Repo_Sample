@@ -1,0 +1,84 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation with typical data",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+15551234567",
+      "company": "Acme Corp",
+      "address": "123 Main St, Springfield, USA"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with minimum required fields",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with maximum field lengths (boundary test)",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", // 50 chars
+      "lastName": "Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", // 50 chars
+      "email": "max.length.email.1234567890.1234567890.1234567890@example.com",
+      "phone": "+19999999999",
+      "company": "LongestCompanyNameAllowedBySystemLtd",
+      "address": "999 Longest Possible Address Lane, Big City, State, 99999, Country"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with special characters in fields",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "O'Connor",
+      "lastName": "Smith-Jones",
+      "email": "o.connor+test@domain.co.uk",
+      "phone": "+44 1234 567890",
+      "company": "ACME & Sons, Inc.",
+      "address": "#42, 2nd Ave. @ Main St."
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium"
+  }
+]
