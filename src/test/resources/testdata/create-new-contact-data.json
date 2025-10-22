@@ -1,0 +1,68 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid data - All required fields populated",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "ExampleCorp"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact exists in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - Minimum length for first and last name",
+    "input": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com",
+      "phone": "1000000000",
+      "company": "EdgeCorp"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact exists in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - Maximum length for first and last name",
+    "input": {
+      "firstName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "lastName": "ZYXWVUTSRQPONMLKJIHGFEDCBAZYXWVUTSRQPONMLKJIHGFEDCBA",
+      "email": "max.length@example.com",
+      "phone": "9999999999",
+      "company": "MaxLengthCorp"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact exists in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - International characters in name",
+    "input": {
+      "firstName": "José",
+      "lastName": "Núñez",
+      "email": "jose.nunez@example.com",
+      "phone": "+34 600 123 456",
+      "company": "Internationál Ltd."
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact exists in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - Special characters in company name",
+    "input": {
+      "firstName": "Anna",
+      "lastName": "Smith",
+      "email": "anna.smith@example.com",
+      "phone": "5551234567",
+      "company": "O'Reilly & Sons, Inc."
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact exists in CRM."
+  }
+]
