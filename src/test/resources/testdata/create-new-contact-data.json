@@ -1,0 +1,73 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation with typical values",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "ExampleCorp",
+      "address": "123 Main St, Springfield, USA"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary test: Maximum length for first and last name",
+    "input": {
+      "firstName": "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", // 50 chars
+      "lastName": "Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", // 50 chars
+      "email": "max.length@example.com",
+      "phone": "9876543210",
+      "company": "BoundaryCorp",
+      "address": "456 Boundary Ave, Edge City, USA"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary test: Minimum required fields only",
+    "input": {
+      "firstName": "Min",
+      "lastName": "Fields",
+      "email": "min.fields@example.com",
+      "phone": "",
+      "company": "",
+      "address": ""
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case: International characters in name",
+    "input": {
+      "firstName": "José",
+      "lastName": "Niño",
+      "email": "jose.niño@example.com",
+      "phone": "+34 600 123 456",
+      "company": "Internacional S.A.",
+      "address": "Calle Falsa 123, Madrid, España"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case: Special characters in company name",
+    "input": {
+      "firstName": "Anna",
+      "lastName": "Smith",
+      "email": "anna.smith@example.com",
+      "phone": "5551234567",
+      "company": "O'Reilly & Sons, Inc.",
+      "address": "789 Market St, San Francisco, CA"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM"
+  }
+]
