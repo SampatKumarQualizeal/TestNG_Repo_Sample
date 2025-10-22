@@ -1,0 +1,72 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1234567890",
+      "company": "ExampleCorp",
+      "address": "123 Main St, Springfield",
+      "notes": "Test contact creation with valid data."
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium",
+    "type": "Positive"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary value: Maximum field lengths",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", // 50 chars
+      "lastName": "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", // 50 chars
+      "email": "max.length.email.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com", // long email
+      "phone": "+19999999999999999999", // long phone
+      "company": "Ccccccccccccccccccccccccccccccccccccccccccccccccccc", // 50 chars
+      "address": "123 Long Address Street, City, State, 12345678901234567890", // long address
+      "notes": "Testing maximum allowed length for all fields."
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium",
+    "type": "Boundary"
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case: Minimal required fields only",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "firstName": "Jane",
+      "lastName": "",
+      "email": "jane@example.com",
+      "phone": "",
+      "company": "",
+      "address": "",
+      "notes": ""
+    },
+    "expectedResult": "System displays appropriate message.",
+    "postConditions": [
+      "New contact is saved in the CRM system"
+    ],
+    "priority": "Medium",
+    "type": "Edge"
+  }
+]
