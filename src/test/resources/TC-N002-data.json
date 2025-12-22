@@ -1,0 +1,68 @@
+{
+  "testCaseId": "TC-N002",
+  "testCaseName": "Invalid Email Format Rejection",
+  "module": null,
+  "submodule": null,
+  "url": null,
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "priority": "Medium",
+  "objective": "Verify system rejects invalid email formats and displays appropriate error message.",
+  "testType": null,
+  "testData": {
+    "validName": "John Doe",
+    "invalidEmails": [
+      "plainaddress",
+      "@missingusername.com",
+      "username@.com",
+      "username@domain",
+      "username@domain..com",
+      "username@domain,com",
+      "username@domain@domain.com",
+      ".username@domain.com",
+      "username@domain.com (Joe Smith)",
+      "username@domain..com",
+      "username@-domain.com",
+      "username@domain-.com",
+      "username@domain_.com",
+      "username@domain#com",
+      "username@domain..com",
+      "username@.domain.com"
+    ],
+    "validPhone": "+1-555-123-4567"
+  },
+  "expectedResultSummary": "System displays an error message indicating the email format is invalid.",
+  "expectedErrorMessage": "Please enter a valid email address.",
+  "postConditions": [
+    "No contact is saved in the CRM system."
+  ],
+  "locators": [
+    {
+      "name": "emailInput",
+      "type": "id",
+      "value": "contactEmail"
+    },
+    {
+      "name": "nameInput",
+      "type": "id",
+      "value": "contactName"
+    },
+    {
+      "name": "phoneInput",
+      "type": "id",
+      "value": "contactPhone"
+    },
+    {
+      "name": "saveButton",
+      "type": "id",
+      "value": "saveContactBtn"
+    },
+    {
+      "name": "emailErrorMessage",
+      "type": "css",
+      "value": "#contactEmail + .error-message"
+    }
+  ]
+}
