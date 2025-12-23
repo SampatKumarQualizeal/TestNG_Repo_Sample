@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import pages.ContactCreationPage;
 import utils.ConfigReader;
 import utils.TestDataReader;
+import utils.TestDataUtils;
 import java.util.Map;
 
 public class ContactCreationTest extends BaseTest {
@@ -49,6 +50,36 @@ public class ContactCreationTest extends BaseTest {
             Assert.assertTrue(isMessageDisplayed, "Expected success message was not displayed after saving contact.");
         } catch (Exception e) {
             Assert.fail("Exception occurred during contact creation: " + e.getMessage(), e);
+        }
+    }
+
+    @Test(description = "TC-N002: Verify system rejects invalid email formats and displays appropriate error message.")
+    public void testInvalidEmailFormatRejection() {
+        Map<String, Object> testData = (Map<String, Object>) TestDataUtils.getTestData("TC-N002");
+        Map<String, Object> invalidEmails = (Map<String, Object>) testData.get("testData");
+        String emailDescription = "Personal";
+        String category = "Lead";
+        for (Map.Entry<String, Object> entry : invalidEmails.entrySet()) {
+            Map<String, String> data = (Map<String, String>) entry.getValue();
+            String firstName = data.get("firstName");
+            String lastName = data.get("lastName");
+            String phone = data.get("phone");
+            String company = data.get("company");
+            String invalidEmail = data.get("email");
+            try {
+                boolean isErrorDisplayed = contactCreationPage.attemptToCreateContactWithInvalidEmail(
+                        firstName,
+                        lastName,
+                        phone,
+                        company,
+                        invalidEmail,
+                        emailDescription,
+                        category
+                );
+                Assert.assertTrue(isErrorDisplayed, "Expected error message for invalid email format not displayed for scenario: " + entry.getKey());
+            } catch (Exception e) {
+                Assert.fail("Exception occurred while testing invalid email scenario '" + entry.getKey() + "': " + e.getMessage(), e);
+            }
         }
     }
 }

@@ -1,0 +1,71 @@
+{
+  "testCaseId": "TC-N002",
+  "name": "Invalid Email Format Rejection",
+  "objective": "Verify system rejects invalid email formats and displays appropriate error message.",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "testData": {
+    "invalidEmailFormats": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@invalid@domain.com",
+      "phone": "9876543210",
+      "company": "Example Corp",
+      "address": "456 Elm St, Sample City, NY 10001",
+      "notes": "Double @ in email address"
+    },
+    "missingAtSymbol": {
+      "firstName": "Alex",
+      "lastName": "Johnson",
+      "email": "alex.johnson.example.com",
+      "phone": "1231231234",
+      "company": "Testers Inc",
+      "address": "789 Oak Ave, Testville, CA 90210",
+      "notes": "Missing @ symbol in email"
+    },
+    "missingDomain": {
+      "firstName": "Sam",
+      "lastName": "Lee",
+      "email": "sam.lee@",
+      "phone": "5555555555",
+      "company": "QA Solutions",
+      "address": "321 Pine Rd, Quality City, TX 73301",
+      "notes": "Missing domain after @"
+    },
+    "missingUsername": {
+      "firstName": "Priya",
+      "lastName": "Patel",
+      "email": "@example.com",
+      "phone": "4443332211",
+      "company": "Automation Hub",
+      "address": "654 Maple Blvd, Automation Town, FL 33101",
+      "notes": "Missing username before @"
+    },
+    "invalidCharacters": {
+      "firstName": "Omar",
+      "lastName": "Nasser",
+      "email": "omar.nasser!@example.com",
+      "phone": "7778889999",
+      "company": "DevOps Ltd",
+      "address": "987 Cedar St, Dev City, WA 98001",
+      "notes": "Invalid character '!' in email"
+    },
+    "spaceInEmail": {
+      "firstName": "Léa",
+      "lastName": "Dubois",
+      "email": "lea.dubois @example.com",
+      "phone": "2223334444",
+      "company": "CRM Experts",
+      "address": "159 Spruce Ln, Paris, France",
+      "notes": "Space in email address"
+    }
+  },
+  "expectedResultSummary": "System displays an error message indicating the email format is invalid.",
+  "postConditions": [
+    "No contact is saved in the CRM system."
+  ],
+  "url": null,
+  "type": null
+}
