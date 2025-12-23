@@ -19,6 +19,15 @@ public class ContactCreationPage {
     private By phoneNumberInput = By.xpath("//input[@name='phone']"); // TODO: Update with actual locator if available
     private By companyInput = By.xpath("//input[@name='company']"); // TODO: Update with actual locator if available
 
+    // Locator for the email input field (placeholder, update with actual locator if available)
+    private static final By EMAIL_INPUT = By.id("email");
+
+    // Locator for the Save or Submit button (placeholder, update with actual locator if available)
+    private static final By SAVE_BUTTON = By.id("saveContact");
+
+    // Locator for the error message displayed for invalid email format (placeholder, update with actual locator if available)
+    private static final By EMAIL_ERROR_MESSAGE = By.id("emailErrorMessage");
+
     public ContactCreationPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -81,5 +90,49 @@ public class ContactCreationPage {
 
         // Save
         driver.findElement(saveButton).click();
+    }
+
+    /**
+     * Attempts to create a new contact with an invalid email format and triggers validation.
+     * This method enters the provided invalid email, submits the form, and waits for the error message.
+     *
+     * @param firstName         First name of the contact (if required by the form, else pass empty string)
+     * @param lastName          Last name of the contact (if required by the form, else pass empty string)
+     * @param invalidEmail      The invalid email string to test
+     */
+    public void attemptToCreateContactWithInvalidEmail(String firstName, String lastName, String invalidEmail) {
+        // Enter first name if applicable
+        // Placeholder: By.id("firstName")
+        if (firstName != null && !firstName.isEmpty()) {
+            driver.findElement(By.id("firstName")).clear();
+            driver.findElement(By.id("firstName")).sendKeys(firstName);
+        }
+        // Enter last name if applicable
+        if (lastName != null && !lastName.isEmpty()) {
+            driver.findElement(By.id("lastName")).clear();
+            driver.findElement(By.id("lastName")).sendKeys(lastName);
+        }
+        // Enter invalid email
+        driver.findElement(EMAIL_INPUT).clear();
+        driver.findElement(EMAIL_INPUT).sendKeys(invalidEmail);
+        // Click Save/Submit to trigger validation
+        driver.findElement(SAVE_BUTTON).click();
+    }
+
+    /**
+     * Returns the error message displayed for invalid email format, if present.
+     *
+     * @return The error message text, or null if not displayed.
+     */
+    public String getInvalidEmailErrorMessage() {
+        try {
+            WebElement errorElement = driver.findElement(EMAIL_ERROR_MESSAGE);
+            if (errorElement.isDisplayed()) {
+                return errorElement.getText();
+            }
+        } catch (Exception e) {
+            // Element not found or not visible
+        }
+        return null;
     }
 }

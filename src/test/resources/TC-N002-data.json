@@ -1,0 +1,68 @@
+{
+  "testCaseId": "TC-N002",
+  "name": "Invalid Email Format Rejection",
+  "url": null,
+  "objective": "Verify system rejects invalid email formats and displays appropriate error message.",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "priority": "Medium",
+  "type": null,
+  "testData": {
+    "invalidEmailFormats": {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "emailCases": [
+        "plainaddress",
+        "@missingusername.com",
+        "username@.com",
+        "username@domain",
+        "username@domain..com",
+        "username@domain,com",
+        "username@domain@domain.com",
+        ".username@yahoo.com",
+        "username@yahoo.com.",
+        "username@yahoo..com",
+        "username@.domain.com",
+        "username@domain.com (Joe Smith)",
+        "username@domain..com",
+        "username@-domain.com",
+        "username@domain-.com"
+      ],
+      "phone": "1234567890",
+      "company": "Test Corp",
+      "address": "456 Elm St, Testville, TX 75002",
+      "notes": "Negative test: invalid email formats"
+    },
+    "boundaryValues": {
+      "firstName": "B",
+      "lastName": "Y",
+      "emailCases": [
+        "a@b",
+        "ab@cd.e"
+      ],
+      "phone": "0",
+      "company": "B",
+      "address": "2",
+      "notes": "Boundary value test: minimal input with invalid email"
+    },
+    "edgeCases": {
+      "firstName": "李",
+      "lastName": "雷",
+      "emailCases": [
+        "user@例子.公司",
+        "用户@.公司",
+        "用户@公司..com"
+      ],
+      "phone": "+86 10 1234 5678",
+      "company": "测试公司",
+      "address": "北京市朝阳区测试路1号",
+      "notes": "Unicode and internationalized invalid email formats"
+    }
+  },
+  "expectedResultSummary": "System displays an error message indicating the email format is invalid.",
+  "postConditions": [
+    "No contact is saved in the CRM system."
+  ]
+}
