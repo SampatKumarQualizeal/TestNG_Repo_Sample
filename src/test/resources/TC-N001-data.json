@@ -1,0 +1,45 @@
+{
+  "testCaseId": "TC-N001",
+  "name": "Create a new contact",
+  "url": null,
+  "objective": "Verify system accepts valid inputs and displays appropriate message.",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "priority": "Medium",
+  "type": null,
+  "testData": {
+    "validContact": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe+test@example.com",
+      "phone": "1234567890",
+      "company": "Perplexity AI",
+      "address": "123 Main St, Test City, TX 75001",
+      "notes": "Test contact creation - standard input"
+    },
+    "boundaryValues": {
+      "firstName": "A",
+      "lastName": "Z",
+      "email": "a.z@example.com",
+      "phone": "0000000000",
+      "company": "A",
+      "address": "1",
+      "notes": "Boundary value test - minimal input"
+    },
+    "edgeCases": {
+      "firstName": "José María",
+      "lastName": "O'Connor-Smith",
+      "email": "jose.smith+crm@exámple.co.uk",
+      "phone": "+44 20 7946 0958",
+      "company": "O'Connor & Sons, LLC",
+      "address": "Ångströmvägen 1, 752 37 Uppsala, Sweden",
+      "notes": "Unicode and special chars in all fields"
+    }
+  },
+  "expectedResultSummary": "System displays appropriate message.",
+  "postConditions": [
+    "New contact is saved in the CRM system."
+  ]
+}
